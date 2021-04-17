@@ -1,0 +1,10 @@
+.heading {
+  font-size: 5em;
+  font-family: 'Montserrat', sans-serif;
+
+  &--bigger {
+    font-size: 7em;
+    padding-top: 1.5em;
+    max-width: 900px;
+  }
+}

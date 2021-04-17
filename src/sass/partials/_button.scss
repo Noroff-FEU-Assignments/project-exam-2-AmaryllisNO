@@ -1,0 +1,22 @@
+.button {
+  text-transform: uppercase;
+  border: 1px solid white;
+  backdrop-filter: blur(8px);
+  max-width: 200px;
+  text-align: center;
+  transition: 0.2s;
+
+  &:hover {
+    transition: 0.2s;
+    color: black;
+    background-color: rgb(63, 63, 63);
+  }
+
+  &__inner {
+    padding: 1em;
+  }
+
+  &--home {
+    margin-top: 2.5em;
+  }
+}
