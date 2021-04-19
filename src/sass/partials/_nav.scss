@@ -2,6 +2,7 @@
   height: 100vh;
   min-width: $sidebar-width;
   position: absolute;
+  z-index: 10;
   background-color: rgba(187, 187, 187, 0.15);
   backdrop-filter: blur(25px);
   text-transform: uppercase;

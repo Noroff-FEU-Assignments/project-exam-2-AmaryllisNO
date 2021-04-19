@@ -5,7 +5,7 @@ const Accommodation = ({ establishment }) => {
     <>
       <Link to={`detail/${establishment.id}`}>
         <div>
-          <h2>{establishment.name}</h2>
+          <h3>{establishment.name}</h3>
           <img src={establishment.image_url} alt={establishment.name} />
           <div>{establishment.base_damage}</div>
           <div>{establishment.damage_type}</div>

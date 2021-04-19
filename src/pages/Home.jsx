@@ -36,13 +36,12 @@ const Home = () => {
     (establishment) => establishment.featured
   );
 
-  console.log(featuredEstablishments);
-
   return (
     <div className='wrapper'>
       <div className='desktop-container'>
         <Heading title='Seek Housing In Bergen' />
         <LinkButton></LinkButton>
+
         <div className='accommodation-container'>
           {loading ? (
             <h2>Loading...</h2>
