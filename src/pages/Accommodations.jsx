@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const Accommodations = () => {
-  console.log('peepeepoopop');
   const [establishments, setEstablishments] = useState([]);
   const [loading, setLoading] = useState(true);
 
