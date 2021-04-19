@@ -7,7 +7,6 @@ import axios from 'axios';
 
 const Home = () => {
   const [establishments, setEstablishments] = useState([]);
-  const [featuredEstablishments, setFeaturedEstablishments] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -33,8 +32,11 @@ const Home = () => {
     fetchEstablishments();
   }, []);
 
-  console.log(establishments);
-  console.log('lmao');
+  let featuredEstablishments = establishments.filter(
+    (establishment) => establishment.featured
+  );
+
+  console.log(featuredEstablishments);
 
   return (
     <div className='wrapper'>
@@ -45,7 +47,7 @@ const Home = () => {
           {loading ? (
             <h2>Loading...</h2>
           ) : (
-            establishments.map((establishment) => {
+            featuredEstablishments.map((establishment) => {
               return (
                 <div key={establishment.id} className='accommodation'>
                   <Accommodation
