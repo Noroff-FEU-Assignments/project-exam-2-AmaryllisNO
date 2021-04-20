@@ -1,4 +1,4 @@
-import Heading from '../components/Heading';
+import BigHeading from '../components/BigHeading';
 import LinkButton from '../components/LinkButton';
 import Accommodation from '../components/Accommodation';
 
@@ -8,6 +8,7 @@ import axios from 'axios';
 const Home = () => {
   const [establishments, setEstablishments] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchEstablishments = async () => {
@@ -25,6 +26,7 @@ const Home = () => {
         }
       } catch (error) {
         console.log(error);
+        setError(error);
       } finally {
         setLoading(false);
       }
@@ -39,7 +41,7 @@ const Home = () => {
   return (
     <div className='wrapper'>
       <div className='desktop-container'>
-        <Heading title='Seek Housing In Bergen' />
+        <BigHeading title='Seek Housing In Bergen' />
         <LinkButton></LinkButton>
 
         <div className='accommodation-container'>
@@ -56,6 +58,15 @@ const Home = () => {
                 </div>
               );
             })
+          )}
+
+          {error ? (
+            <div className='error'>
+              An error occured trying to load the establishments :( ...
+              {error.toString()}
+            </div>
+          ) : (
+            <></>
           )}
         </div>
       </div>
