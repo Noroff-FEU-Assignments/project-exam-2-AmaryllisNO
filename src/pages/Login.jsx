@@ -1,4 +1,4 @@
-import * as yup from 'yup';
+/* import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useState, useContext } from 'react';
 import { useForm } from 'react-hook-form';
@@ -14,3 +14,4 @@ const Login = () => {
 };
 
 export default Login;
+ */

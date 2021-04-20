@@ -5,18 +5,38 @@ import { contactSchema } from '../utils/schemas';
 import Heading from '../components/Heading';
 import Glass from '../components/Glass';
 
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const Contact = () => {
   const [submitting, setSubmitting] = useState(false);
-  const [loginError, setLoginError] = useState(null);
+  const [contactError, setContactError] = useState(null);
+  const [success, setSuccess] = useState(null);
+  const [message, setMessage] = useState(null);
   const history = useHistory();
 
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(contactSchema),
   });
+
+  const onSubmit = async (data) => {
+    setSubmitting(true);
+    setContactError(null);
+    console.log(data);
+
+    try {
+      const res = await axios.post('http://localhost:1337/messages', data);
+      console.log(res);
+      setMessage(res.data);
+      setSuccess(true);
+    } catch (error) {
+      console.log('error', error);
+      setContactError(error.toString());
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   return (
     <>
@@ -24,11 +44,44 @@ const Contact = () => {
       <div className='wrapper'>
         <div className='desktop-container'>
           <Heading title='Contact'></Heading>
-          <form>
-            <fieldset>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <fieldset disabled={submitting}>
               <div>
-                <input name='name' placeholder='Name' ref={register} />
+                <input
+                  name='name'
+                  placeholder='Name'
+                  {...register('name')}
+                  type='text'
+                />
               </div>
+              <div>
+                <input
+                  name='email'
+                  placeholder='Email'
+                  {...register('email')}
+                  type='text'
+                />
+              </div>
+              <div>
+                <input
+                  name='subject'
+                  placeholder='Subject'
+                  {...register('subject')}
+                  type='text'
+                />
+              </div>
+              <div>
+                <textarea
+                  name='message'
+                  placeholder='message'
+                  {...register('message')}
+                  type='text'
+                />
+              </div>
+
+              <button className='button' type='submit'>
+                Send Message
+              </button>
             </fieldset>
           </form>
         </div>
