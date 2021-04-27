@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { BASE_URL, ESTABLISHMENTS_PATH } from '../utils/constants';
 
 import Glass from '../components/Glass';
 import Accommodation from '../components/Accommodation';
@@ -16,7 +17,7 @@ const Accommodations = () => {
           console.log('loading');
         }
 
-        const res = await axios.get(`http://localhost:1337/establishments`);
+        const res = await axios.get(`${BASE_URL}${ESTABLISHMENTS_PATH}`);
 
         if (res.status === 200) {
           console.log('call successful');

@@ -1,5 +1,19 @@
+import AccommodationDetail from '../components/AccommodationDetail';
+import Glass from '../components/Glass';
+import EnquiryForm from '../components/EnquiryForm';
+
 const Detail = () => {
-  return <div></div>;
+  return (
+    <>
+      <Glass></Glass>
+      <div className='wrapper'>
+        <div className='desktop-container'>
+          <AccommodationDetail />
+          <EnquiryForm />
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default Detail;

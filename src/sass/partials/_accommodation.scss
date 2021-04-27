@@ -1,4 +1,8 @@
 .accommodation {
   max-width: 200px;
   display: inline-block;
+
+  &-details {
+    display: flex;
+  }
 }

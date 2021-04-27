@@ -2,6 +2,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { contactSchema } from '../utils/schemas';
 
+import { BASE_URL, MESSAGES_PATH } from '../utils/constants';
+
 import Heading from '../components/Heading';
 import Glass from '../components/Glass';
 
@@ -21,12 +23,13 @@ const Contact = () => {
   });
 
   const onSubmit = async (data) => {
+    console.log('SUBMITTED');
     setSubmitting(true);
     setContactError(null);
     console.log(data);
 
     try {
-      const res = await axios.post('http://localhost:1337/messages', data);
+      const res = await axios.post(`${BASE_URL}${MESSAGES_PATH}`, data);
       console.log(res);
       setMessage(res.data);
       setSuccess(true);
@@ -78,11 +81,10 @@ const Contact = () => {
                   type='text'
                 />
               </div>
-
-              <button className='button' type='submit'>
-                Send Message
-              </button>
             </fieldset>
+            <button className='button' type='submit'>
+              Send Message
+            </button>
           </form>
         </div>
       </div>

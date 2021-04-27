@@ -2,6 +2,8 @@ import BigHeading from '../components/BigHeading';
 import LinkButton from '../components/LinkButton';
 import Accommodation from '../components/Accommodation';
 
+import { BASE_URL, ESTABLISHMENTS_PATH } from '../utils/constants';
+
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -18,7 +20,7 @@ const Home = () => {
           console.log('loading');
         }
 
-        const res = await axios.get(`http://localhost:1337/establishments`);
+        const res = await axios.get(`${BASE_URL}${ESTABLISHMENTS_PATH}`);
 
         if (res.status === 200) {
           console.log('call successful');
