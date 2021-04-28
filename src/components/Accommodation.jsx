@@ -4,11 +4,16 @@ const Accommodation = ({ establishment }) => {
   return (
     <>
       <Link to={`detail/${establishment.id}`}>
-        <div>
-          <h3>{establishment.name}</h3>
-          <img src={establishment.image_url} alt={establishment.name} />
-          <div>{establishment.base_damage}</div>
-          <div>{establishment.damage_type}</div>
+        <img
+          className='accommodation__image'
+          src={establishment.image_url}
+          alt={establishment.name}
+        />
+        <div className='accommodation__inner'>
+          <h3 className='accommodation__title'>{establishment.name}</h3>
+          <small className='accommodation__price'>
+            {establishment.price} kr/night
+          </small>
         </div>
       </Link>
     </>

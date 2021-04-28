@@ -7,12 +7,16 @@ import { BASE_URL, ESTABLISHMENTS_PATH } from '../utils/constants';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
+const establishmentsUrl = `${BASE_URL}${ESTABLISHMENTS_PATH}`;
+
 const Home = () => {
   const [establishments, setEstablishments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    const source = axios.CancelToken.source();
+
     const fetchEstablishments = async () => {
       try {
         setLoading(true);
@@ -20,21 +24,31 @@ const Home = () => {
           console.log('loading');
         }
 
-        const res = await axios.get(`${BASE_URL}${ESTABLISHMENTS_PATH}`);
+        const res = await axios.get(establishmentsUrl, {
+          cancelToken: source.token,
+        });
 
         if (res.status === 200) {
           console.log('call successful');
           setEstablishments(res.data);
         }
       } catch (error) {
-        console.log(error);
-        setError(error);
+        if (axios.isCancel(error)) {
+          console.log('fetch aborted');
+        } else {
+          console.log(error);
+          setError(error);
+          throw error;
+        }
       } finally {
         setLoading(false);
       }
     };
     fetchEstablishments();
-  }, []);
+    return () => {
+      source.cancel();
+    };
+  }, [establishmentsUrl]);
 
   let featuredEstablishments = establishments.filter(
     (establishment) => establishment.featured

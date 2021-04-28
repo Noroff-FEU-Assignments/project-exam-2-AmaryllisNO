@@ -1,8 +1,42 @@
 .accommodation {
-  max-width: 200px;
-  display: inline-block;
+  width: 100%;
+  &-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 2;
+    gap: 20px;
+    row-gap: 0px;
+  }
 
   &-details {
     display: flex;
+  }
+
+  &__inner {
+    position: relative;
+    top: -46px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    backdrop-filter: blur(20px);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    display: inline;
+    position: relative;
+  }
+
+  &__price {
+    padding-right: 10px;
+  }
+
+  &__image {
+    max-height: 226px;
+    min-height: 226px;
+    min-width: 100%;
+    object-fit: cover;
   }
 }
