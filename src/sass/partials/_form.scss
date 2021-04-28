@@ -1,0 +1,36 @@
+.form {
+  font-family: 'Raleway', sans-serif;
+  padding-top: 2em;
+  &__fieldset {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+  }
+
+  &__input {
+    color: white;
+    background-color: black;
+    border: 0px solid white;
+    margin-bottom: 7px;
+    padding: 0.8em;
+
+    &:active {
+      border: none;
+      outline: 0;
+    }
+    &:focus {
+      border: none;
+      outline: 0;
+    }
+  }
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}

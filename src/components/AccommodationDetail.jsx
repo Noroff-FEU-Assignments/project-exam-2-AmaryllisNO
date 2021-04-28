@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BASE_URL, ESTABLISHMENTS_PATH } from '../utils/constants';
 
+import Host from '../assets/icons/host.svg';
+
 const establishmentsAPI = BASE_URL + ESTABLISHMENTS_PATH;
 
 const AccommodationDetail = () => {
@@ -52,15 +54,25 @@ const AccommodationDetail = () => {
     <>
       <div className='accommodation-details'>
         <div className='accommodation-details__section'>
-          <img src={establishments.image_url} alt={establishments.name} />
+          <img
+            className='accommodation-details__image'
+            src={establishments.image_url}
+            alt={establishments.name}
+          />
         </div>
         <div className='accommodation-details__section'>
-          <h2>{establishments.name}</h2>
+          <h2 className='accommodation-details__title'>
+            {establishments.name}
+          </h2>
           <div className='accommodation-details__host'>
-            Hosted by {establishments.host}
+            <small>Hosted by {establishments.host}</small>
+            <img src={Host} alt='host' />
           </div>
           <div className='accommodation-details__price'>
-            {establishments.price} kr / night
+            <b className='accommodation-details__pricevalue'>
+              {establishments.price} kr
+            </b>{' '}
+            / night
           </div>
           <p className='accommodation-details__description'>
             {establishments.description}

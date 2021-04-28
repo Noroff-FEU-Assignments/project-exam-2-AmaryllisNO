@@ -36,30 +36,40 @@ const EnquiryForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <fieldset>
+    <form onSubmit={handleSubmit(onSubmit)} className='form'>
+      <fieldset className='form__fieldset'>
         <input
+          className='form__input'
           name='name'
           placeholder='name'
           type='text'
           {...register('name')}
         />
         <input
+          className='form__input'
           name='email'
           placeholder='email'
           type='email'
           {...register('email')}
         />
-        <input name='doa' placeholder='doa' type='date' {...register('doa')} />
         <input
+          className='form__input'
+          name='doa'
+          placeholder='doa'
+          type='date'
+          {...register('doa')}
+        />
+        <input
+          className='form__input'
           name='days'
           placeholder='days'
           type='number'
+          min='1'
           {...register('days')}
         />
       </fieldset>
-      <button className='button' type='submit'>
-        Send Message
+      <button className='button button--form' type='submit'>
+        Send Booking Request
       </button>
     </form>
   );

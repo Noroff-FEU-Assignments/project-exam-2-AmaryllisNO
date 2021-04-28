@@ -1,4 +1,5 @@
 .button {
+  font-family: 'Raleway', sans-serif;
   text-transform: uppercase;
   border: 1px solid white;
   backdrop-filter: blur(8px);
@@ -18,5 +19,17 @@
 
   &--home {
     margin-top: 2.5em;
+  }
+
+  &--form {
+    margin-top: 3em;
+    color: white;
+    padding: 0.8em 1.2em 0.8em 1.2em;
+    background-color: black;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgb(236, 236, 236);
+    }
   }
 }

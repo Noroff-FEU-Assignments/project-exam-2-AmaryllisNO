@@ -9,7 +9,38 @@
   }
 
   &-details {
+    padding-top: 3em;
     display: flex;
+
+    &__section {
+      margin-right: 3em;
+      min-width: 50%;
+      overflow: hidden;
+    }
+
+    &__section > * {
+      padding-top: 1em;
+    }
+
+    &__description {
+      font-family: 'Raleway', sans-serif;
+    }
+
+    &__pricevalue {
+      font-size: 1.5em;
+    }
+
+    &__title {
+      padding: 0;
+    }
+
+    &__image {
+      padding: 0;
+      max-height: 400px;
+      max-width: 600px;
+      min-width: 600px;
+      object-fit: cover;
+    }
   }
 
   &__inner {
