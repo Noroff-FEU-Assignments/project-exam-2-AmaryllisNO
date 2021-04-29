@@ -2,7 +2,6 @@ import { createContext } from 'react';
 import useLocalStorage from '../utils/useLocalStorage';
 
 const AuthContext = createContext([null, () => {}]);
-console.log(AuthContext);
 
 export const AuthProvider = (props) => {
   const [auth, setAuth] = useLocalStorage('auth', null);

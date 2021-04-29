@@ -41,14 +41,14 @@ const EnquiryForm = () => {
         <input
           className='form__input'
           name='name'
-          placeholder='name'
+          placeholder='Name'
           type='text'
           {...register('name')}
         />
         <input
           className='form__input'
           name='email'
-          placeholder='email'
+          placeholder='E-mail'
           type='email'
           {...register('email')}
         />
@@ -62,8 +62,9 @@ const EnquiryForm = () => {
         <input
           className='form__input'
           name='days'
-          placeholder='days'
+          placeholder='Days'
           type='number'
+          value='1'
           min='1'
           {...register('days')}
         />

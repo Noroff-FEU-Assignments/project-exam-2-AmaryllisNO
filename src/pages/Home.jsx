@@ -58,9 +58,9 @@ const Home = () => {
     <div className='wrapper'>
       <div className='desktop-container'>
         <BigHeading title='Seek Housing In Bergen' />
-        <LinkButton></LinkButton>
+        <LinkButton />
 
-        <div className='accommodation-container'>
+        <div className='accommodation-container accommodation-container--home'>
           {loading ? (
             <h2>Loading...</h2>
           ) : (
@@ -76,14 +76,7 @@ const Home = () => {
             })
           )}
 
-          {error ? (
-            <div className='error'>
-              An error occured trying to load the establishments :( ...
-              {error.toString()}
-            </div>
-          ) : (
-            <></>
-          )}
+          {error ? <div className='error'>{error.toString()}</div> : <></>}
         </div>
       </div>
     </div>

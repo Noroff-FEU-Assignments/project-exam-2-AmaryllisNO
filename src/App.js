@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
 import Nav from './components/Nav';
 
 import './sass/main.scss';
@@ -12,19 +13,21 @@ import Login from './pages/Login';
 
 function App() {
   return (
-    <div className='App'>
-      <Router>
-        <Nav></Nav>
-        <Switch>
-          <Route path='/' exact component={Home} />
-          <Route path='/accommodations' component={Accommodations} />
-          <Route path='/detail/:id' component={Detail} />
-          <Route path='/contact' component={Contact} />
-          <Route path='/login' component={Login} />
-          <Route path='/admin' component={Admin} />
-        </Switch>
-      </Router>
-    </div>
+    <AuthProvider>
+      <div className='App'>
+        <Router>
+          <Nav></Nav>
+          <Switch>
+            <Route path='/' exact component={Home} />
+            <Route path='/accommodations' component={Accommodations} />
+            <Route path='/detail/:id' component={Detail} />
+            <Route path='/contact' component={Contact} />
+            <Route path='/login' component={Login} />
+            <Route path='/admin' component={Admin} />
+          </Switch>
+        </Router>
+      </div>
+    </AuthProvider>
   );
 }
 

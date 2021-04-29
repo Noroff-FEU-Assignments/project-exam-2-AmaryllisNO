@@ -2,21 +2,19 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { contactSchema } from '../utils/schemas';
 
-import { BASE_URL, MESSAGES_PATH } from '../utils/constants';
+import { BASE_URL, MESSAGES_PATH, title } from '../utils/constants';
 
 import Heading from '../components/Heading';
 import Glass from '../components/Glass';
 
 import { useState } from 'react';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
 
 const Contact = () => {
   const [submitting, setSubmitting] = useState(false);
   const [contactError, setContactError] = useState(null);
   const [success, setSuccess] = useState(null);
   const [message, setMessage] = useState(null);
-  const history = useHistory();
 
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(contactSchema),
@@ -46,15 +44,16 @@ const Contact = () => {
       <Glass></Glass>
       <div className='wrapper'>
         <div className='desktop-container'>
-          <Heading title='Contact'></Heading>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <fieldset disabled={submitting}>
+          <Heading title={window.location.pathname.replace('/', '')}></Heading>
+          <form onSubmit={handleSubmit(onSubmit)} className='form'>
+            <fieldset disabled={submitting} className='form__fieldset'>
               <div>
                 <input
                   name='name'
                   placeholder='Name'
                   {...register('name')}
                   type='text'
+                  className='form__input'
                 />
               </div>
               <div>
@@ -63,6 +62,7 @@ const Contact = () => {
                   placeholder='Email'
                   {...register('email')}
                   type='text'
+                  className='form__input'
                 />
               </div>
               <div>
@@ -71,6 +71,7 @@ const Contact = () => {
                   placeholder='Subject'
                   {...register('subject')}
                   type='text'
+                  className='form__input'
                 />
               </div>
               <div>
@@ -79,6 +80,7 @@ const Contact = () => {
                   placeholder='message'
                   {...register('message')}
                   type='text'
+                  className='form__input'
                 />
               </div>
             </fieldset>

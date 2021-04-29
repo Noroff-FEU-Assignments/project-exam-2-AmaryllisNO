@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BASE_URL, ESTABLISHMENTS_PATH } from '../utils/constants';
 
-import Host from '../assets/icons/host.svg';
+import Host from '../assets/icons/Host.svg';
 
 const establishmentsAPI = BASE_URL + ESTABLISHMENTS_PATH;
 

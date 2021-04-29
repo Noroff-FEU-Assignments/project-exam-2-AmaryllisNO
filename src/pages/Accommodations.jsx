@@ -5,6 +5,7 @@ import { BASE_URL, ESTABLISHMENTS_PATH } from '../utils/constants';
 import Glass from '../components/Glass';
 import Accommodation from '../components/Accommodation';
 import Filter from '../components/Filter';
+import Heading from '../components/Heading';
 
 const establishmentsUrl = `${BASE_URL}${ESTABLISHMENTS_PATH}`;
 
@@ -74,6 +75,7 @@ const Accommodations = () => {
       <Glass></Glass>
       <div className='wrapper'>
         <div className='desktop-container'>
+          <Heading title={window.location.pathname.replace('/', '')} />
           <Filter search={search} onChange={filterChange}></Filter>
           <div className='accommodation-container'>
             {loading ? (

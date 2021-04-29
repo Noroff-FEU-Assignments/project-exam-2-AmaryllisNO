@@ -15,3 +15,8 @@ export const enquirySchema = yup.object().shape({
   doa: yup.date().required('Please enter your date of arrival'),
   days: yup.number().required('Please enter how long you will be staying'),
 });
+
+export const loginSchema = yup.object().shape({
+  identifier: yup.string().required('Please enter your username'),
+  password: yup.string().required('Please enter your password'),
+});
