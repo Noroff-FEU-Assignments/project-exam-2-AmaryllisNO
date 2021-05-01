@@ -2,7 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { contactSchema } from '../utils/schemas';
 
-import { BASE_URL, MESSAGES_PATH, title } from '../utils/constants';
+import { BASE_URL, MESSAGES_PATH } from '../utils/constants';
 
 import Heading from '../components/Heading';
 import Glass from '../components/Glass';

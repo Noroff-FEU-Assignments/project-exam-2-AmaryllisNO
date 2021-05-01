@@ -62,7 +62,7 @@ const Login = () => {
               />
             </fieldset>
             <button className='button button--form' type='submit'>
-              Login
+              {submitting ? 'Logging in...' : 'Login'}
             </button>
           </form>
         </div>

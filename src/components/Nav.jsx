@@ -50,11 +50,22 @@ const Nav = () => {
         </li>
 
         {auth ? (
-          <li className='nav__listitem'>
-            <button onClick={logout} className='button button--form'>
-              Log Out
-            </button>
-          </li>
+          <>
+            <li className='nav__listitem'>
+              <Link to='/admin'>
+                {pathname === '/admin' ? (
+                  <span className='nav__link nav__link--active'>Admin</span>
+                ) : (
+                  <span className='nav__link'>Admin</span>
+                )}
+              </Link>
+            </li>
+            <li className='nav__listitem'>
+              <button onClick={logout} className='button button--form'>
+                Log Out
+              </button>
+            </li>
+          </>
         ) : (
           <li className='nav__listitem'>
             <Link to='/login'>
