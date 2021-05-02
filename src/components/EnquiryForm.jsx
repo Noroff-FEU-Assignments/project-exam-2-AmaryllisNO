@@ -18,7 +18,6 @@ const EnquiryForm = () => {
   const onSubmit = async (data) => {
     console.log('submit enquiry', data);
     setSubmitting(true);
-    console.log(submitting);
 
     try {
       const res = await axios.post(`${BASE_URL}${ENQUIRIES_PATH}`, data);
@@ -38,6 +37,13 @@ const EnquiryForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='form'>
       <fieldset className='form__fieldset'>
+        <input
+          className='form__input'
+          name='establishment'
+          placeholder='Establishment'
+          type='text'
+          {...register('establishment')}
+        />
         <input
           className='form__input'
           name='name'
@@ -64,7 +70,6 @@ const EnquiryForm = () => {
           name='days'
           placeholder='Days'
           type='number'
-          value='1'
           min='1'
           {...register('days')}
         />

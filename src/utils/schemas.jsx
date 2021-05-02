@@ -10,6 +10,7 @@ export const contactSchema = yup.object().shape({
 });
 
 export const enquirySchema = yup.object().shape({
+  establishment: yup.string(),
   name: yup.string().required('Please enter your name'),
   email: yup.string().email().required('Please enter your email'),
   doa: yup.date().required('Please enter your date of arrival'),

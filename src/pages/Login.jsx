@@ -28,6 +28,7 @@ const Login = () => {
     try {
       const res = await axios.post(`${BASE_URL}${AUTH_PATH}`, data);
       setAuth(res.data);
+      console.log('response:', res.data);
 
       if (res.status === 200) {
         history.push('/admin');

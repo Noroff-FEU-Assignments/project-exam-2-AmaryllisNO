@@ -6,6 +6,12 @@
     vertical-align: top;
     margin-right: 3rem;
   }
+
+  &__containerlabel {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    text-transform: uppercase;
+  }
   &__item {
     background-color: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(10px);
