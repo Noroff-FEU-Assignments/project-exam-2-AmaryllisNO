@@ -47,44 +47,53 @@ const Contact = () => {
           <Heading title={window.location.pathname.replace('/', '')}></Heading>
           <form onSubmit={handleSubmit(onSubmit)} className='form'>
             <fieldset disabled={submitting} className='form__fieldset'>
-              <div>
-                <input
-                  name='name'
-                  placeholder='Name'
-                  {...register('name')}
-                  type='text'
-                  className='form__input'
-                />
+              <div className='form__inputcontainer'>
+                <label className='form__inputlabel'>
+                  <span className='form__inputlabelname'>Name</span>
+                  <input
+                    name='name'
+                    placeholder='Name'
+                    {...register('name')}
+                    type='text'
+                    className='form__input'
+                  />
+                </label>
               </div>
-              <div>
-                <input
-                  name='email'
-                  placeholder='Email'
-                  {...register('email')}
-                  type='text'
-                  className='form__input'
-                />
+              <div className='form__inputcontainer'>
+                <label className='form__inputlabel'>
+                  <span className='form__inputlabelname'>E-mail</span>
+                  <input
+                    name='email'
+                    placeholder='Email'
+                    {...register('email')}
+                    type='text'
+                    className='form__input'
+                  />
+                </label>
               </div>
-              <div>
-                <input
-                  name='subject'
-                  placeholder='Subject'
-                  {...register('subject')}
-                  type='text'
-                  className='form__input'
-                />
+              <div className='form__inputcontainer'>
+                <label className='form__inputlabel'>
+                  <span className='form__inputlabelname'>Subject</span>
+                  <input
+                    name='subject'
+                    placeholder='Subject'
+                    {...register('subject')}
+                    type='text'
+                    className='form__input'
+                  />
+                </label>
               </div>
-              <div>
+              <div className='form__inputcontainer'>
                 <textarea
                   name='message'
                   placeholder='message'
                   {...register('message')}
                   type='text'
-                  className='form__input'
+                  className='form__input form__input--textleft'
                 />
               </div>
             </fieldset>
-            <button className='button' type='submit'>
+            <button className='button button--form' type='submit'>
               Send Message
             </button>
           </form>

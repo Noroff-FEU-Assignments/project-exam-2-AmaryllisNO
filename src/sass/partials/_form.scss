@@ -1,10 +1,15 @@
 .form {
   font-family: 'Raleway', sans-serif;
   padding-top: 2em;
+
+  &__numcontrolcontainer {
+    display: flex;
+    flex-direction: column;
+  }
   &__fieldset {
     display: flex;
     flex-direction: column;
-    max-width: 400px;
+    max-width: 350px;
   }
 
   &__input {
@@ -13,7 +18,64 @@
     border: 0px solid white;
     margin-bottom: 7px;
     padding: 1em;
-    min-width: 400px;
+    //min-width: 100%;
+    text-align: end;
+
+    &--textleft {
+      text-align: start;
+    }
+
+    &--number {
+      margin-bottom: 0px;
+      padding-right: 0;
+    }
+
+    &--heading {
+      text-align: start;
+      text-transform: uppercase;
+      font-size: 1.2em;
+      background-color: rgba(0, 0, 0, 0);
+      padding: 0 0 0 0;
+      margin-left: 0;
+    }
+
+    &container {
+      color: white;
+      background-color: black;
+      border: 0px solid white;
+      margin-bottom: 7px;
+
+      &--number {
+        display: inline-flex;
+        align-items: center;
+      }
+    }
+
+    &numcontrol {
+      padding: 0.1em 0.4em 0.1em 0.4em;
+      font-size: 1em;
+      font-weight: bolder;
+      user-select: none;
+      background-color: white;
+      color: black;
+      transition: 0.2s;
+
+      &:hover {
+        transition: 0.2s;
+        cursor: pointer;
+        background-color: black;
+        color: white;
+      }
+    }
+
+    &label {
+      display: inline-flex;
+      justify-content: space-between;
+      flex-direction: row;
+      align-items: center;
+      padding-left: 1em;
+      min-width: 100%;
+    }
 
     &:active {
       border: none;
@@ -24,6 +86,11 @@
       outline: 0;
     }
   }
+}
+
+textarea {
+  width: 100%;
+  text-align: start;
 }
 
 input[type='number']::-webkit-inner-spin-button,

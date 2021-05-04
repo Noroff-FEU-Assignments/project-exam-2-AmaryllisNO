@@ -10,11 +10,19 @@ export const contactSchema = yup.object().shape({
 });
 
 export const enquirySchema = yup.object().shape({
-  establishment: yup.string(),
+  establishment: yup.string().required(),
   name: yup.string().required('Please enter your name'),
   email: yup.string().email().required('Please enter your email'),
-  doa: yup.date().required('Please enter your date of arrival'),
-  days: yup.number().required('Please enter how long you will be staying'),
+  doa: yup
+    .date('Please enter your date of arrival')
+    .required('Please enter your date of arrival')
+    .typeError('Please enter your date of arrival'),
+
+  days: yup
+    .number()
+    .required('Please enter how long you will be staying')
+    .typeError('Please enter how long you will be staying'),
+  sum: yup.number(),
 });
 
 export const loginSchema = yup.object().shape({

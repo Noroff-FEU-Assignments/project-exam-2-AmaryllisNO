@@ -106,6 +106,12 @@ const Admin = () => {
                             {enquiry.days}
                           </div>
                         </div>
+                        <div className='admin__enquiryfield'>
+                          <div className='admin__enquirylabel'>Sum</div>
+                          <div className='admin__enquiryvalue'>
+                            {enquiry.sum}
+                          </div>
+                        </div>
                         <button
                           className='button button--form'
                           onClick={() => {
