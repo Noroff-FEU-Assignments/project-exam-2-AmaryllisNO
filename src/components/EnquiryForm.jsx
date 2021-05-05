@@ -55,7 +55,7 @@ const EnquiryForm = ({ props }) => {
     }
 
     if (!sum) {
-      setValueDays(0);
+      setValueDays(1);
       console.log('reset days to 0');
     }
 
@@ -65,8 +65,8 @@ const EnquiryForm = ({ props }) => {
 
   const calculateSubtractedSum = () => {
     if (valueDays === 0) {
-      setSum(price);
-      setValueDays(1);
+      setSum(0);
+      setValueDays(0);
     } else {
       setSum(price * (valueDays - 1));
     }
