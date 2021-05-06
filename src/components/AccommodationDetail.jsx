@@ -16,8 +16,14 @@ const AccommodationDetail = ({ props }) => {
         <div className='accommodation-details__section'>
           <h2 className='accommodation-details__title'>{name}</h2>
           <div className='accommodation-details__host'>
-            <small>Hosted by {host}</small>
-            <img src={Host} alt='host' />
+            <small>
+              Hosted by <b>{host}</b>
+            </small>
+            <img
+              className='accommodation-details__hostimage'
+              src={Host}
+              alt='host'
+            />
           </div>
           <div className='accommodation-details__price'>
             <b className='accommodation-details__pricevalue'>{price} kr</b> /

@@ -2,3 +2,24 @@ $background-image: url('http://amaryllis.cc/projectexam2/bergen.jpg');
 
 $sidebar-width: 300px;
 $desktop-padding: 0 7em 0 7em;
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-slower {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}

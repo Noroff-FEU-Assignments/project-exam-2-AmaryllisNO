@@ -46,6 +46,18 @@ const Admin = () => {
     try {
       const res = await http.delete(`${BASE_URL}${ENQUIRIES_PATH}/${id}`);
       console.log(res);
+      alert(`enquiry with an id of ${id} has been deleted`);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setRender(render + 1);
+    }
+  };
+
+  const deleteMessage = async (id) => {
+    try {
+      const res = await http.delete(`${BASE_URL}${MESSAGES_PATH}/${id}`);
+      console.log(res);
       alert(`message with an id of ${id} has been deleted`);
     } catch (error) {
       console.log(error);
@@ -152,6 +164,14 @@ const Admin = () => {
                             {message.message}
                           </div>
                         </div>
+                        <button
+                          className='button button--form'
+                          onClick={() => {
+                            deleteMessage(message.id);
+                          }}
+                        >
+                          Delete Message
+                        </button>
                       </div>
                     );
                   })}

@@ -1,12 +1,15 @@
 import { Link, useLocation, useHistory } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
+import Hamburger from '../assets/icons/Hamburger.svg';
+import Cross from '../assets/icons/Cross.svg';
 
 const Nav = () => {
   const location = useLocation();
   const pathname = location.pathname;
   const history = useHistory();
 
+  const [open, setOpen] = useState(false);
   const [auth, setAuth] = useContext(AuthContext);
 
   const logout = () => {
@@ -14,9 +17,27 @@ const Nav = () => {
     history.push('/');
   };
   return (
-    <nav className='nav'>
+    <nav className={open ? 'nav nav--open' : 'nav'}>
       <div className='nav__logo'>
         <Link to='/'>Holidaze</Link>
+      </div>
+      <div className='nav__hamburger'>
+        <button
+          className='nav__hamburgerbutton'
+          onClick={() => {
+            setOpen(!open);
+          }}
+        >
+          <img
+            src={!open ? Hamburger : Cross}
+            alt='Hamburger Button'
+            className={
+              !open
+                ? 'nav__hamburgerimage'
+                : 'nav__hamburgerimage nav__hamburgerimage--fade'
+            }
+          />
+        </button>
       </div>
       <ul className='nav__list'>
         <li className='nav__listitem'>

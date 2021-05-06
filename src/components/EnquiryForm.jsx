@@ -206,7 +206,7 @@ const EnquiryForm = ({ props }) => {
         <></>
       )}
       <button className='button button--form' type='submit'>
-        Send Booking Request
+        {submitting ? 'Submitting Enquiry...' : 'Send Booking Request'}
       </button>
     </form>
   );

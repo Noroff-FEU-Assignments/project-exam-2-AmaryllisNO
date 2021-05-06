@@ -4,7 +4,7 @@
   max-width: $sidebar-width;
   position: fixed;
   z-index: 10;
-  background-color: rgba(187, 187, 187, 0.15);
+  background-color: rgba(34, 34, 34, 0.158);
   backdrop-filter: blur(25px);
   text-transform: uppercase;
   padding: 2.7em;
@@ -13,6 +13,19 @@
     display: block;
     font-size: 18px;
     margin-bottom: 0.9em;
+  }
+
+  &__hamburger {
+    display: none;
+  }
+
+  &__hamburgerimage {
+    animation: fade-in-slower 0.3s linear;
+    transition: 0.3s;
+
+    &--fade {
+      animation: fade-in 0.3s linear;
+    }
   }
 
   &__logo {
@@ -36,6 +49,91 @@
         vertical-align: middle;
         background-color: white;
       }
+    }
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .nav {
+    height: 40px;
+    min-width: none;
+    max-width: none;
+    width: 100%;
+    position: fixed;
+    z-index: 20;
+    bottom: 0;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    vertical-align: middle;
+    transition: 0.3s;
+
+    &--open {
+      transition: 0.3s;
+      height: 500px;
+      padding: 1rem;
+      background-color: rgba(0, 0, 0, 0.733);
+    }
+
+    &--open &__list {
+      margin-top: 15vh;
+      display: block;
+      opacity: 1;
+      transition: 0.3s;
+      animation: fade-in 0.4s linear;
+    }
+
+    &--open &__hamburgerimage {
+      animation: fade-in 0.3s ease 1;
+    }
+
+    /* &--open &__logo {
+    } */
+
+    &__list {
+      display: none;
+      opacity: 0;
+      transition: 0.3s;
+    }
+
+    &__logo {
+      justify-content: center;
+      max-width: 215px;
+      font-size: 2em;
+      margin: 0 auto;
+      /*  margin-left: 5em;
+      margin-top: 5px; */
+      transition: 0.3s;
+      margin-bottom: 0;
+    }
+
+    &__hamburger {
+      display: flex;
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      vertical-align: middle;
+      margin-bottom: 0.3em;
+      margin-right: 0.5em;
+    }
+
+    &__hamburgerbutton {
+      width: 50px;
+      outline: 0;
+      border: none;
+      background-color: rgba(0, 0, 0, 0);
+      background: none;
+      vertical-align: middle;
+    }
+
+    &__hamburgerimage {
+      background-color: rgba(255, 255, 255, 0);
+      background: none;
+      outline: 0;
+      border: none;
     }
   }
 }
