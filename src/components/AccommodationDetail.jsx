@@ -1,7 +1,17 @@
 import Host from '../assets/icons/Host.svg';
+import useAxios from '../utils/useAxios';
+
+import { useContext } from 'react';
+import AuthContext from '../context/AuthContext';
+import { useParams, useHistory, Link } from 'react-router-dom';
 
 const AccommodationDetail = ({ props }) => {
   let { name, image_url, host, price, description } = props;
+
+  const [auth] = useContext(AuthContext);
+  const history = useHistory();
+  const http = useAxios();
+  const { id } = useParams();
 
   return (
     <>
@@ -30,6 +40,13 @@ const AccommodationDetail = ({ props }) => {
             night
           </div>
           <p className='accommodation-details__description'>{description}</p>
+          {auth ? (
+            <Link to={`/edit/${id}`}>
+              <button class='button button--form'>Edit Accommodation</button>
+            </Link>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </>

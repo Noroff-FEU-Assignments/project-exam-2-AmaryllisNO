@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { BASE_URL, ENQUIRIES_PATH, MESSAGES_PATH } from '../utils/constants';
@@ -76,7 +75,17 @@ const Admin = () => {
             <div className='admin__container'>
               <div className='admin__containerlabel'>Enquiries</div>
               {loading ? (
-                <div>Loading enquiries...</div>
+                <>
+                  <div>Loading enquiries...</div>
+                  <div className='loader'>
+                    <div class='lds-ellipsis'>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                    </div>
+                  </div>
+                </>
               ) : (
                 <div className='admin__panel'>
                   {enquiries.map((enquiry) => {
@@ -141,7 +150,17 @@ const Admin = () => {
             <div className='admin__container'>
               <div className='admin__containerlabel'>Messages</div>
               {loading ? (
-                <div>Loading messages...</div>
+                <>
+                  <div>Loading messages...</div>
+                  <div className='loader'>
+                    <div class='lds-ellipsis'>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                    </div>
+                  </div>
+                </>
               ) : (
                 <div className='admin__panel'>
                   {messages.map((message) => {

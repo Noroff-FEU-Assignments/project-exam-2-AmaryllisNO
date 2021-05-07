@@ -82,6 +82,17 @@ const Nav = () => {
               </Link>
             </li>
             <li className='nav__listitem'>
+              <Link to='/add'>
+                {pathname === '/add' ? (
+                  <span className='nav__link nav__link--active'>
+                    Add Accom.
+                  </span>
+                ) : (
+                  <span className='nav__link'>Add Accom.</span>
+                )}
+              </Link>
+            </li>
+            <li className='nav__listitem'>
               <button onClick={logout} className='button button--form'>
                 Log Out
               </button>

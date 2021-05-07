@@ -79,7 +79,14 @@ const Accommodations = () => {
           <Filter search={search} onChange={filterChange}></Filter>
           <div className='accommodation-container'>
             {loading ? (
-              <h2>Loading...</h2>
+              <div className='loader'>
+                <div class='lds-ellipsis'>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+              </div>
             ) : (
               filteredEstablishments.map((establishment) => {
                 return (

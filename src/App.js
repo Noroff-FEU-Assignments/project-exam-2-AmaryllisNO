@@ -10,6 +10,8 @@ import Contact from './pages/Contact';
 import Detail from './pages/Detail';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import Add from './pages/Add';
+import Edit from './pages/Edit';
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
             <Route path='/contact' component={Contact} />
             <Route path='/login' component={Login} />
             <Route path='/admin' component={Admin} />
+            <Route path='/add' component={Add} />
+            <Route path='/edit' component={Edit} />
           </Switch>
         </Router>
       </div>

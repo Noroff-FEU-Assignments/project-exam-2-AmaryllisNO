@@ -25,6 +25,15 @@ export const enquirySchema = yup.object().shape({
   sum: yup.number(),
 });
 
+export const addSchema = yup.object().shape({
+  name: yup.string().required('Please enter the name of the establishment'),
+  image_url: yup.string().required(),
+  featured: yup.boolean().required(),
+  description: yup.string().required(),
+  price: yup.number().required(),
+  host: yup.string().required(),
+});
+
 export const loginSchema = yup.object().shape({
   identifier: yup.string().required('Please enter your username'),
   password: yup.string().required('Please enter your password'),

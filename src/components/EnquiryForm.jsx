@@ -10,11 +10,6 @@ import { enquirySchema } from '../utils/schemas';
 const EnquiryForm = ({ props }) => {
   let { name, price } = props;
 
-  if (props) {
-    console.log(name);
-    console.log(price);
-  }
-
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [enquiry, setEnquiry] = useState(null);
@@ -123,7 +118,7 @@ const EnquiryForm = ({ props }) => {
             />
           </label>
         </div>
-        {errors.name && <p>{errors.name?.message}</p>}
+        {errors.name && <p className='error'>{errors.name?.message}</p>}
 
         <div className='form__inputcontainer'>
           <label className='form__inputlabel'>
