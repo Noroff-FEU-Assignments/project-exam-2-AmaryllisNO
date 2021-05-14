@@ -7,7 +7,7 @@ import { BASE_URL, ESTABLISHMENTS_PATH } from '../utils/constants';
 
 import useAxios from '../utils/useAxios';
 
-import { addSchema } from '../utils/schemas';
+import { accommodationSchema } from '../utils/schemas';
 
 import Glass from '../components/Glass';
 import Heading from '../components/Heading';
@@ -23,7 +23,7 @@ const Add = () => {
   const http = useAxios();
 
   if (!auth) {
-    history.push('/');
+    history.push('/login');
   }
 
   const {
@@ -31,7 +31,7 @@ const Add = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(addSchema),
+    resolver: yupResolver(accommodationSchema),
   });
 
   const onSubmit = async (data) => {
@@ -53,7 +53,7 @@ const Add = () => {
     }
   };
 
-  console.log(error);
+  console.log(errors);
   return (
     <>
       <Glass></Glass>
@@ -90,7 +90,7 @@ const Add = () => {
                 <label className='form__inputlabel'>
                   <span className='form__inputlabelname'>Featured</span>
                   <input
-                    className='form__input'
+                    className='form__input form__input--checkbox'
                     name='featured'
                     placeholder='Enter your name...'
                     type='checkbox'
@@ -139,6 +139,8 @@ const Add = () => {
               {submitting ? 'Adding Accommodation...' : 'Add Accommodation'}
             </button>
           </form>
+          {success && <p>{establishment.name} has been added!</p>}
+          {error && <p className='error'>{error}</p>}
         </div>
       </div>
     </>

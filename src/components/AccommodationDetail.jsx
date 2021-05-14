@@ -5,6 +5,8 @@ import { useContext } from 'react';
 import AuthContext from '../context/AuthContext';
 import { useParams, useHistory, Link } from 'react-router-dom';
 
+import { BASE_URL, ESTABLISHMENTS_PATH } from '../utils/constants';
+
 const AccommodationDetail = ({ props }) => {
   let { name, image_url, host, price, description } = props;
 
@@ -12,6 +14,19 @@ const AccommodationDetail = ({ props }) => {
   const history = useHistory();
   const http = useAxios();
   const { id } = useParams();
+
+  const deleteAccommodation = async (id) => {
+    try {
+      const res = await http.delete(`${BASE_URL}${ESTABLISHMENTS_PATH}/${id}`);
+      console.log(res);
+      alert(`accommodation with an id of ${id} has been deleted`);
+      history.push('/accommodations');
+    } catch (error) {
+      console.log(error);
+    } finally {
+      console.log('');
+    }
+  };
 
   return (
     <>
@@ -23,7 +38,7 @@ const AccommodationDetail = ({ props }) => {
             alt={name}
           />
         </div>
-        <div className='accommodation-details__section'>
+        <div className='accommodation-details__section accommodation-details__section--right'>
           <h2 className='accommodation-details__title'>{name}</h2>
           <div className='accommodation-details__host'>
             <small>
@@ -41,9 +56,25 @@ const AccommodationDetail = ({ props }) => {
           </div>
           <p className='accommodation-details__description'>{description}</p>
           {auth ? (
-            <Link to={`/edit/${id}`}>
-              <button class='button button--form'>Edit Accommodation</button>
-            </Link>
+            <>
+              <div className='accommodation-details__button'>
+                <Link to={`/edit/${id}`}>
+                  <button className='button button--form button--auth'>
+                    Edit
+                  </button>
+                </Link>
+              </div>
+              <div className='accommodation-details__button'>
+                <button
+                  className='button button--form button--delete button--auth'
+                  onClick={() => {
+                    deleteAccommodation(id);
+                  }}
+                >
+                  Delete
+                </button>
+              </div>
+            </>
           ) : (
             <></>
           )}

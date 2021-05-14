@@ -41,6 +41,8 @@ const EnquiryForm = ({ props }) => {
     }
   };
 
+  // price calculation logic
+
   const calculateAddedSum = () => {
     if (valueDays === 0) {
       setSum(price);
@@ -132,7 +134,7 @@ const EnquiryForm = ({ props }) => {
             />
           </label>
         </div>
-        {errors.email && <p>{errors.email?.message}</p>}
+        {errors.email && <p className='error'>{errors.email.message}</p>}
 
         <div className='form__inputcontainer'>
           <label className='form__inputlabel'>
@@ -148,7 +150,7 @@ const EnquiryForm = ({ props }) => {
             />
           </label>
         </div>
-        {errors.doa && <p>{errors.doa?.message}</p>}
+        {errors.doa && <p className='error'>{errors.doa.message}</p>}
 
         <div className='form__inputcontainer form__inputcontainer--number'>
           <label className='form__inputlabel'>
@@ -172,7 +174,7 @@ const EnquiryForm = ({ props }) => {
             </div>
           </label>
         </div>
-        {errors.days && <p>{errors.days?.message}</p>}
+        {errors.days && <p className='error'>{errors.days.message}</p>}
       </fieldset>
 
       <fieldset className='form__fieldset'>
@@ -194,7 +196,7 @@ const EnquiryForm = ({ props }) => {
       </fieldset>
       {success ? (
         <p>
-          Enquiry for {enquiry.establishment} was submitted. Thank you,
+          Enquiry for {enquiry.establishment} was submitted. Thank you,{' '}
           {enquiry.name}
         </p>
       ) : (

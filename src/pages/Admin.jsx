@@ -39,6 +39,7 @@ const Admin = () => {
       }
     };
     getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [render]);
 
   const deleteEnquiry = async (id) => {
@@ -78,7 +79,7 @@ const Admin = () => {
                 <>
                   <div>Loading enquiries...</div>
                   <div className='loader'>
-                    <div class='lds-ellipsis'>
+                    <div className='lds-ellipsis'>
                       <div></div>
                       <div></div>
                       <div></div>
@@ -153,7 +154,7 @@ const Admin = () => {
                 <>
                   <div>Loading messages...</div>
                   <div className='loader'>
-                    <div class='lds-ellipsis'>
+                    <div className='lds-ellipsis'>
                       <div></div>
                       <div></div>
                       <div></div>

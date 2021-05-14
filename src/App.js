@@ -27,7 +27,7 @@ function App() {
             <Route path='/login' component={Login} />
             <Route path='/admin' component={Admin} />
             <Route path='/add' component={Add} />
-            <Route path='/edit' component={Edit} />
+            <Route path='/edit/:id' component={Edit} />
           </Switch>
         </Router>
       </div>

@@ -32,3 +32,18 @@
     color: rgb(161, 161, 161);
   }
 }
+
+@media only screen and (max-width: 900px) {
+  .admin {
+    &__container {
+      display: inline-block;
+      vertical-align: top;
+      margin-right: 3rem;
+      min-width: 100%;
+    }
+
+    &__panel {
+      margin-bottom: 4em;
+    }
+  }
+}

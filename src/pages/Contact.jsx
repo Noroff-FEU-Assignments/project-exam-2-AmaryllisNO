@@ -16,7 +16,11 @@ const Contact = () => {
   const [success, setSuccess] = useState(null);
   const [message, setMessage] = useState(null);
 
-  const { register, handleSubmit, errors } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     resolver: yupResolver(contactSchema),
   });
 
@@ -39,6 +43,9 @@ const Contact = () => {
     }
   };
 
+  console.log(errors);
+  console.log(message);
+
   return (
     <>
       <Glass></Glass>
@@ -59,6 +66,7 @@ const Contact = () => {
                   />
                 </label>
               </div>
+              {errors.name && <p className='error'>{errors.name.message}</p>}
               <div className='form__inputcontainer'>
                 <label className='form__inputlabel'>
                   <span className='form__inputlabelname'>E-mail</span>
@@ -71,6 +79,7 @@ const Contact = () => {
                   />
                 </label>
               </div>
+              {errors.email && <p className='error'>{errors.email.message}</p>}
               <div className='form__inputcontainer'>
                 <label className='form__inputlabel'>
                   <span className='form__inputlabelname'>Subject</span>
@@ -83,6 +92,9 @@ const Contact = () => {
                   />
                 </label>
               </div>
+              {errors.subject && (
+                <p className='error'>{errors.subject.message}</p>
+              )}
               <div className='form__inputcontainer'>
                 <textarea
                   name='message'
@@ -92,11 +104,16 @@ const Contact = () => {
                   className='form__input form__input--textleft'
                 />
               </div>
+              {errors.message && (
+                <p className='error'>{errors.message.message}</p>
+              )}
             </fieldset>
             <button className='button button--form' type='submit'>
               Send Message
             </button>
           </form>
+          {success && <p>Message was sent!</p>}
+          {contactError && <p className='error'>{contactError}</p>}
         </div>
       </div>
     </>

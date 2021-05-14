@@ -62,14 +62,17 @@ const Home = () => {
 
         <div className='accommodation-container accommodation-container--home'>
           {loading ? (
-            <div className='loader'>
-              <div className='lds-ellipsis'>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+            <>
+              <div>Loading accommodations...</div>
+              <div className='loader'>
+                <div className='lds-ellipsis'>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
               </div>
-            </div>
+            </>
           ) : (
             featuredEstablishments.map((establishment) => {
               return (

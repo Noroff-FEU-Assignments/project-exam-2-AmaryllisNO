@@ -25,13 +25,13 @@ export const enquirySchema = yup.object().shape({
   sum: yup.number(),
 });
 
-export const addSchema = yup.object().shape({
+export const accommodationSchema = yup.object().shape({
   name: yup.string().required('Please enter the name of the establishment'),
-  image_url: yup.string().required(),
-  featured: yup.boolean().required(),
-  description: yup.string().required(),
-  price: yup.number().required(),
-  host: yup.string().required(),
+  image_url: yup.string().required('Please enter an image url'),
+  featured: yup.boolean().required('Please choose if it is featured'),
+  description: yup.string().required('Please provide a description'),
+  price: yup.number().required('Please set a price'),
+  host: yup.string().required('Please enter name of host'),
 });
 
 export const loginSchema = yup.object().shape({

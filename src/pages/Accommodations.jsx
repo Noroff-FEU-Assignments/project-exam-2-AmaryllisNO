@@ -16,7 +16,6 @@ const Accommodations = () => {
   const [search, setSearch] = useState('');
 
   useEffect(() => {
-    let unmounted = false;
     const source = axios.CancelToken.source();
 
     const fetchEstablishments = async () => {
@@ -48,9 +47,9 @@ const Accommodations = () => {
     };
     fetchEstablishments();
     return () => {
-      unmounted = true;
       source.cancel('Cancelling in cleanup');
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [establishmentsUrl]);
 
   const filterChange = (e) => {
@@ -79,14 +78,17 @@ const Accommodations = () => {
           <Filter search={search} onChange={filterChange}></Filter>
           <div className='accommodation-container'>
             {loading ? (
-              <div className='loader'>
-                <div class='lds-ellipsis'>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
+              <>
+                <div>Loading accommodations...</div>
+                <div className='loader'>
+                  <div className='lds-ellipsis'>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
                 </div>
-              </div>
+              </>
             ) : (
               filteredEstablishments.map((establishment) => {
                 return (

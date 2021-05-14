@@ -19,6 +19,8 @@ const Detail = () => {
 
   const { id } = useParams();
 
+  console.log(id);
+
   if (!id) {
     history.push('/');
   }
