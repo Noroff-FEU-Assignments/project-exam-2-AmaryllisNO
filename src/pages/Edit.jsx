@@ -24,8 +24,6 @@ const Edit = () => {
     const fetchEstablishment = async () => {
       try {
         const res = await http.get(`${ESTABLISHMENTS_PATH}/${id}`);
-
-        console.log(res.data);
         setEstablishment(res.data);
       } catch (error) {
         console.log(error);
@@ -34,8 +32,6 @@ const Edit = () => {
     fetchEstablishment();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
-
-  console.log(establishment);
 
   return (
     <>

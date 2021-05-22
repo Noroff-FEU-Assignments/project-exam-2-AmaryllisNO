@@ -13,10 +13,13 @@ import Heading from '../components/Heading';
 
 const Login = () => {
   const history = useHistory();
-  console.log(useContext(AuthContext));
   const [, setAuth] = useContext(AuthContext);
 
-  const { register, handleSubmit, errors } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     resolver: yupResolver(loginSchema),
   });
 
@@ -28,7 +31,6 @@ const Login = () => {
     try {
       const res = await axios.post(`${BASE_URL}${AUTH_PATH}`, data);
       setAuth(res.data);
-      console.log('response:', res.data);
 
       if (res.status === 200) {
         history.push('/admin');
@@ -55,12 +57,14 @@ const Login = () => {
                 type='text'
                 {...register('identifier')}
               />
+              {errors.identifier && <p>{errors.identifier}</p>}
               <input
                 className='form__input'
                 placeholder='Password'
                 type='password'
                 {...register('password')}
               />
+              {errors.password && <p>{errors.password}</p>}
             </fieldset>
             <button className='button button--form' type='submit'>
               {submitting ? 'Logging in...' : 'Login'}

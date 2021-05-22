@@ -17,14 +17,12 @@ const AccommodationDetail = ({ props }) => {
 
   const deleteAccommodation = async (id) => {
     try {
-      const res = await http.delete(`${BASE_URL}${ESTABLISHMENTS_PATH}/${id}`);
-      console.log(res);
+      await http.delete(`${BASE_URL}${ESTABLISHMENTS_PATH}/${id}`);
+
       alert(`accommodation with an id of ${id} has been deleted`);
       history.push('/accommodations');
     } catch (error) {
       console.log(error);
-    } finally {
-      console.log('');
     }
   };
 

@@ -31,7 +31,6 @@ const Admin = () => {
 
         setMessages(resMessages.data);
         setEnquiries(resEnquiries.data);
-        console.log(resEnquiries.data);
       } catch (error) {
         console.log(error);
       } finally {
@@ -44,8 +43,8 @@ const Admin = () => {
 
   const deleteEnquiry = async (id) => {
     try {
-      const res = await http.delete(`${BASE_URL}${ENQUIRIES_PATH}/${id}`);
-      console.log(res);
+      await http.delete(`${BASE_URL}${ENQUIRIES_PATH}/${id}`);
+
       alert(`enquiry with an id of ${id} has been deleted`);
     } catch (error) {
       console.log(error);
@@ -56,8 +55,8 @@ const Admin = () => {
 
   const deleteMessage = async (id) => {
     try {
-      const res = await http.delete(`${BASE_URL}${MESSAGES_PATH}/${id}`);
-      console.log(res);
+      await http.delete(`${BASE_URL}${MESSAGES_PATH}/${id}`);
+
       alert(`message with an id of ${id} has been deleted`);
     } catch (error) {
       console.log(error);

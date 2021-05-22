@@ -20,16 +20,12 @@ const Home = () => {
     const fetchEstablishments = async () => {
       try {
         setLoading(true);
-        if (loading) {
-          console.log('loading');
-        }
 
         const res = await axios.get(establishmentsUrl, {
           cancelToken: source.token,
         });
 
         if (res.status === 200) {
-          console.log('call successful');
           setEstablishments(res.data);
         }
       } catch (error) {
@@ -48,6 +44,7 @@ const Home = () => {
     return () => {
       source.cancel();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [establishmentsUrl]);
 
   let featuredEstablishments = establishments.filter(

@@ -26,23 +26,20 @@ const EnquiryForm = ({ props }) => {
   });
 
   const onSubmit = async (data) => {
-    console.log('submit enquiry', data);
     setSubmitting(true);
 
     try {
       const res = await axios.post(`${BASE_URL}${ENQUIRIES_PATH}`, data);
-      console.log(res);
+
       setEnquiry(res.data);
       setSuccess(true);
     } catch (error) {
-      console.log('error;', error);
     } finally {
       setSubmitting(false);
     }
   };
 
   // price calculation logic
-
   const calculateAddedSum = () => {
     if (valueDays === 0) {
       setSum(price);
@@ -53,11 +50,7 @@ const EnquiryForm = ({ props }) => {
 
     if (!sum) {
       setValueDays(1);
-      console.log('reset days to 0');
     }
-
-    console.log('sum calculated');
-    console.log('days:', valueDays);
   };
 
   const calculateSubtractedSum = () => {
@@ -70,11 +63,7 @@ const EnquiryForm = ({ props }) => {
 
     if (!sum) {
       setValueDays(0);
-      console.log('reset days to 0');
     }
-
-    console.log('sum calculated');
-    console.log('days:', valueDays);
   };
 
   const add = () => {
@@ -96,7 +85,6 @@ const EnquiryForm = ({ props }) => {
       <fieldset className='form__fieldset' disabled={submitting}>
         {name ? (
           <input
-            // disabled={true}
             className='form__input form__input--heading'
             name='establishment'
             placeholder='Establishment'

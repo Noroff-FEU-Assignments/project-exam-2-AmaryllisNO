@@ -25,26 +25,20 @@ const Contact = () => {
   });
 
   const onSubmit = async (data) => {
-    console.log('SUBMITTED');
     setSubmitting(true);
     setContactError(null);
-    console.log(data);
 
     try {
       const res = await axios.post(`${BASE_URL}${MESSAGES_PATH}`, data);
-      console.log(res);
       setMessage(res.data);
       setSuccess(true);
+      console.log(message);
     } catch (error) {
-      console.log('error', error);
       setContactError(error.toString());
     } finally {
       setSubmitting(false);
     }
   };
-
-  console.log(errors);
-  console.log(message);
 
   return (
     <>

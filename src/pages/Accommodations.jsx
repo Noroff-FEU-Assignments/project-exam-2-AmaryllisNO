@@ -22,16 +22,11 @@ const Accommodations = () => {
       try {
         setLoading(true);
 
-        if (loading) {
-          console.log('loading');
-        }
-
         const res = await axios.get(establishmentsUrl, {
           cancelToken: source.token,
         });
 
         if (res.status === 200) {
-          console.log('call successful');
           setEstablishments(res.data);
 
           setFilteredEstablishments(res.data);
@@ -60,14 +55,8 @@ const Accommodations = () => {
       return establishment.name.toLowerCase().includes(search.toLowerCase());
     });
 
-    console.log('inside', filteredEstablishments);
-
     setFilteredEstablishments(filteredEstablishments);
   };
-
-  if (!loading) {
-    console.log('outside', filteredEstablishments);
-  }
 
   return (
     <>

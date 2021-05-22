@@ -19,8 +19,6 @@ const Detail = () => {
 
   const { id } = useParams();
 
-  console.log(id);
-
   if (!id) {
     history.push('/');
   }
@@ -35,9 +33,6 @@ const Detail = () => {
     const fetchEstablishment = async () => {
       try {
         setLoading(true);
-        if (loading) {
-          console.log('loading');
-        }
 
         const res = await axios.get(url);
 
@@ -52,7 +47,6 @@ const Detail = () => {
       }
     };
     fetchEstablishment();
-    console.log(establishment);
   }, [url]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (

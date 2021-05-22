@@ -35,25 +35,21 @@ const Add = () => {
   });
 
   const onSubmit = async (data) => {
-    console.log('submitted form');
-    console.log('submit establishment', data);
     setSubmitting(true);
     setError(null);
 
     try {
       const res = await http.post(`${BASE_URL}${ESTABLISHMENTS_PATH}`, data);
-      console.log(res);
+
       setEstablishment(res.data);
       setSuccess(true);
     } catch (error) {
-      console.log('error;', error);
       setError(error.toString());
     } finally {
       setSubmitting(false);
     }
   };
 
-  console.log(errors);
   return (
     <>
       <Glass></Glass>
@@ -74,6 +70,7 @@ const Add = () => {
                   />
                 </label>
               </div>
+              {errors.name && <p className='error'>{errors.name?.message}</p>}
               <div className='form__inputcontainer'>
                 <label className='form__inputlabel'>
                   <span className='form__inputlabelname'>Image URL</span>
@@ -86,6 +83,9 @@ const Add = () => {
                   />
                 </label>
               </div>
+              {errors.image_url && (
+                <p className='error'>{errors.image_url?.message}</p>
+              )}
               <div className='form__inputcontainer'>
                 <label className='form__inputlabel'>
                   <span className='form__inputlabelname'>Featured</span>
@@ -110,6 +110,9 @@ const Add = () => {
                   />
                 </label>
               </div>
+              {errors.description && (
+                <p className='error'>{errors.description?.message}</p>
+              )}
               <div className='form__inputcontainer'>
                 <label className='form__inputlabel'>
                   <span className='form__inputlabelname'>Price</span>
@@ -122,18 +125,20 @@ const Add = () => {
                   />
                 </label>
               </div>
+              {errors.price && <p className='error'>{errors.price?.message}</p>}
               <div className='form__inputcontainer'>
                 <label className='form__inputlabel'>
                   <span className='form__inputlabelname'>Host</span>
                   <input
                     className='form__input'
                     name='name'
-                    placeholder='Enter host name name...'
+                    placeholder='Enter host name...'
                     type='text'
                     {...register('host')}
                   />
                 </label>
               </div>
+              {errors.host && <p className='error'>{errors.host?.message}</p>}
             </fieldset>
             <button className='button button--form' type='submit'>
               {submitting ? 'Adding Accommodation...' : 'Add Accommodation'}

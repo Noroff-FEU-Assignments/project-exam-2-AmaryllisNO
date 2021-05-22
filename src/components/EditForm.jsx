@@ -10,18 +10,16 @@ const EditForm = ({ establishment }) => {
   const http = useAxios();
   let { id } = useParams();
   const [editedEstablishment, setEditedEstablishment] = useState(establishment);
+  console.log(editedEstablishment);
 
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
 
-  console.log(editedEstablishment);
-
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm({
     defaultValues: establishment,
     resolver: yupResolver(accommodationSchema),
@@ -30,15 +28,13 @@ const EditForm = ({ establishment }) => {
   const onSubmit = async (data) => {
     setSubmitting(true);
     setError(null);
-    console.log(data);
 
     try {
       const res = await http.put(`${ESTABLISHMENTS_PATH}/${id}`, data);
-      console.log(res);
+
       setEditedEstablishment(res.data);
       setSuccess(true);
     } catch (error) {
-      console.log('error;', error);
       setError(error.toString());
     } finally {
       setSubmitting(false);
@@ -56,7 +52,6 @@ const EditForm = ({ establishment }) => {
               <input
                 className='form__input'
                 type='text'
-                // defaultValue={establishment.name}
                 name='name'
                 placeholder='Enter your name...'
                 {...register('name')}
@@ -69,7 +64,6 @@ const EditForm = ({ establishment }) => {
               <span className='form__inputlabelname'>Image URL</span>
               <input
                 className='form__input'
-                // defaultValue={establishment.image_url}
                 name='image_url'
                 placeholder='Enter your image link...'
                 type='text'
@@ -85,8 +79,6 @@ const EditForm = ({ establishment }) => {
               <span className='form__inputlabelname'>Featured</span>
               <input
                 className='form__input form__input--checkbox'
-                // defaultChecked={establishment.featured}
-                // defaultValue={establishment.featured}
                 name='featured'
                 placeholder='Enter your name...'
                 type='checkbox'
@@ -102,7 +94,6 @@ const EditForm = ({ establishment }) => {
               <span className='form__inputlabelname'>Description</span>
               <textarea
                 className='form__input'
-                // defaultValue={establishment.description}
                 name='description'
                 placeholder='Enter a description...'
                 type='text'
@@ -118,7 +109,6 @@ const EditForm = ({ establishment }) => {
               <span className='form__inputlabelname'>Price</span>
               <input
                 className='form__input'
-                // defaultValue={establishment.price}
                 name='price'
                 placeholder='Enter a price per night...'
                 type='number'
@@ -132,7 +122,6 @@ const EditForm = ({ establishment }) => {
               <span className='form__inputlabelname'>Host</span>
               <input
                 className='form__input'
-                // defaultValue={establishment.host}
                 name='name'
                 placeholder='Enter host name name...'
                 type='text'
@@ -142,11 +131,7 @@ const EditForm = ({ establishment }) => {
           </div>
           {errors.host && <p className='error'>{errors.host.message}</p>}
         </fieldset>
-        <button
-          className='button button--form'
-          type='submit'
-          // onClick={() => reset({ defaultValues })}
-        >
+        <button className='button button--form' type='submit'>
           {submitting ? 'Editing Accommodation...' : 'Edit Accommodation'}
         </button>
       </form>
